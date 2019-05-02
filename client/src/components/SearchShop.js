@@ -17,6 +17,8 @@ class SearchShop extends Component {
         this.randomize = this.randomize.bind(this)
   }
 
+
+
   searchShop(e){
     const query = e.target.value;
 
@@ -71,7 +73,7 @@ class SearchShop extends Component {
                     <td> 
                       <li key={r.shopId}>
                         <div class="image">
-                          <Image class="d-block w-100" src={pic1} alt="Third slide" className="pic2" rounded/>
+                          {/*<Image class="d-block w-100" src={pic1} alt="Third slide" className="pic2" rounded/>*/}
                           <h5><span>
                             {r.name}
                             <StarRatingComponent 
@@ -104,10 +106,10 @@ class SearchShop extends Component {
                         value={this.state.query}
                         onChange={this.searchShop}
                       />
+                      <Suggestions results = {this.state.shops} />
                     </article>
 
                  
-                  <Suggestions results = {this.state.shops} />
                 {/*=========================================================*/}
                 
               </body>            

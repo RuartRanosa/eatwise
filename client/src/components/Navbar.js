@@ -20,7 +20,6 @@ class Navbar extends Component {
         const loginRegLink = (
             <div className="header">
                 <table>
-                    <tr><p></p></tr>
                     <tr>
                         <td>
                             <Login history = {this.props.history}/>
@@ -35,7 +34,9 @@ class Navbar extends Component {
         const userLink = (
             <div className="header">
                 <table>
-                    <tr><p></p></tr><tr>
+                    <tr><p></p></tr>
+                    <tr><p></p></tr>
+                    <tr>
                     <td>
                         <Link to="/profile">
                             <Button className="header-button"> Profile </Button>
@@ -51,6 +52,7 @@ class Navbar extends Component {
 
                  </table>   
              </div>           
+           
         )
         {/*=======================================================================================================*/}
         return (

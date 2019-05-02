@@ -29,7 +29,7 @@ class Shop extends Component {
     constructor() {
         super()
         this.state = {
-            userId: 0,
+            userId: -1,
             name: "",
             shopId: 0,
             avgPrice: "",
@@ -57,21 +57,25 @@ class Shop extends Component {
 
     submitRating(e){
       e.preventDefault()
-      console.log(this.state.votes)
-      const rating = {
-        userId: this.state.userId,
-        shopId: this.state.shopId,
-        comment: this.state.comment,
-        votes: this.state.votes
-      }
-
-      rate(rating).then((res) => {
-        if(res){
-          alert("Rating completed")
-        }else{
-          alert("Failed")
+      if(this.state.userId > -1){
+        console.log(this.state.votes)
+        const rating = {
+          userId: this.state.userId,
+          shopId: this.state.shopId,
+          comment: this.state.comment,
+          votes: this.state.votes
         }
-      })
+
+        rate(rating).then((res) => {
+          if(res){
+            alert("Rating completed")
+          }else{
+            alert("Failed")
+          }
+        })
+      }else{
+        alert("Not Logged in. Cannot make a review")
+      }
     }
     
 
@@ -94,12 +98,13 @@ class Shop extends Component {
                 this.setState({shopId: id})
             })
             .catch((e) => { console.log(e)});   
-
-        var token = localStorage.usertoken
-        var decoded = jwt_decode(token)
-        this.setState({
-            userId: decoded.userId
-        })     
+        if(localStorage.usertoken){
+          var token = localStorage.usertoken
+          var decoded = jwt_decode(token)
+          this.setState({
+              userId: decoded.userId
+          })     
+        }
     }
 
     //reloads page when new data arrives

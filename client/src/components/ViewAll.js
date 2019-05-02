@@ -16,7 +16,7 @@ class ViewAll extends Component{
 		//send a message to games-server
 		//populate this.sate.games with the data sent back
 
-		fetch('http://localhost:3001/ViewAll')
+		fetch('http://localhost:2019/ViewAll')
 			.then(response => response.json())
 			.then(body => {
 				this.setState({page: body})

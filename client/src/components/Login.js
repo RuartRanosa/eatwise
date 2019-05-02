@@ -31,6 +31,7 @@ class Login extends Component {
                 this.props.history.push(`/profile`)
             }else{
                 alert("Login Failed. Try again")
+                console.log(res)
             }
         })
     }

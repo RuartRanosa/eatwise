@@ -6,7 +6,7 @@ import AddShop from './AddShop'
 import AddRest from './AddRest'
 import './CSS/Profile.css';
 import ppic from '../pictures/img_avatar.png'
-
+import Files from 'react-files'
 
 
 class Profile extends Component {
@@ -21,25 +21,30 @@ class Profile extends Component {
             shop: [],
             shopName: "",
             showAdminTools: false,
-            showAddShop: false
+            showAddShop: false,
+            location: ""
         }
 
         this.addShop = this.addShop.bind(this)
+                this.onFilesChange = this.onFilesChange.bind(this)
 
     }
+  onFilesChange(files) {
+    console.log(files)
+  }
 
     componentDidMount () {
-        var token = localStorage.usertoken
-        console.log(token)
-        var decoded = jwt_decode(token)
-        console.log("decoded token")
-        this.setState({
-            userId: decoded.userId,
-            username: decoded.username,
-            display_name: decoded.display_name,
-            email: decoded.email,
-            adminAccess: decoded.adminAccess
-        })
+        if(localStorage.usertoken){
+            var token = localStorage.usertoken
+            var decoded = jwt_decode(token)
+            this.setState({
+                userId: decoded.userId,
+                username: decoded.username,
+                display_name: decoded.display_name,
+                email: decoded.email,
+                adminAccess: decoded.adminAccess
+            })
+        }
     }
     
     addShop(){
@@ -64,7 +69,7 @@ class Profile extends Component {
         return (
                  
             <div className="pdiv">
-                <img src={ppic} className="profile-pic"/>
+                <img src={require("../pictures/img_avatar.png")} className="profile-pic"/>
                     <table className="ptable">
                     <tr>{this.state.username}</tr>
                         <tr className="ptr">
@@ -84,6 +89,8 @@ class Profile extends Component {
 
                 {shop}
                 <SearchShop/>
+
+
             </div>
         )
     }

@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const bcryptjs = require("bcryptjs")
+const express = require("express")
 
 process.env.SECRET_KEY = 'secret'
 // NOTE: queries will be changer depending on future database procedures
@@ -15,14 +16,16 @@ exports.register = function(req, res){
     }
     conn.query("select email from user where email = '"+req.body.email+"';", (err, result)=>{
     	if(!err && result.length === 0){
-		    conn.query('call addUser(false, "'+userData.username+'", "'+userData.email+'", "'+userData.display_name+'", "'+userData.password+'", "'+userData.location+'");', (err, res) => {
+		    conn.query('call addUser(false, "'+userData.username+'", "'+userData.email+'", "'+userData.display_name+'", "'+userData.password+'", "'+userData.location+'");', (err, response) => {
+		    	if(!err){
 					console.log("Register successful!")
-					res.send(res)
-				
+					res.json({ status: userData.email + ' registered!' })
+		    	}else{
+		    		res.send("Error: "+err)
+		    	}	
 			})
     	}else{
-    		console.log(result)
-    		res.send(200, "User is already registered")
+    		res.send(400, "User is already registered")
     	}
     })
 }
@@ -32,8 +35,6 @@ exports.login = function(req, res){
     conn.query('select userId, adminAccess, username, displayName, email, CAST(aes_decrypt(password, "secret") AS CHAR(10000) CHARACTER SET utf8) as password from user where email = "'+req.body.email+'";', (err, result) => {
 		if(!err && result.length > 0){
 			if (req.body.password === result[0].password) {
-
-					console.log("creating token")
                     const payload = {
                         userId: result[0].userId,
                         username: result[0].username,
@@ -47,7 +48,7 @@ exports.login = function(req, res){
                     console.log("Logged in!!!")
                     res.send(token)
                 } else {
-                    res.json({ error: "User does not exist" })
+                    res.send(400, 'User does not exist');
                 }
 		}else{
            res.send(400, 'Couldnt get a connection');

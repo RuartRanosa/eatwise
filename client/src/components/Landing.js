@@ -57,7 +57,7 @@ class Landing extends Component {
         </div>
 */}
       return (  
-        <div className="App">
+        <div className="">
           <header className="App-header">
             <body className="App-body">
               <article className="slideshow">
@@ -86,7 +86,7 @@ class Landing extends Component {
                 </article>
                 <article className="csearch-bars">
                   <h2 className="sTitle">Eatwise - Elbi Food Establishment Companion</h2>
-                  <SearchShop className="csearch-bars"/>
+                  <SearchShop/>
                 </article>
               </article>
               <div className="bottom-side">

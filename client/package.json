@@ -5,11 +5,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
+    "mapbox-gl": "^0.54.0",
     "query-string": "^6.5.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-files": "^2.4.8",
+    "react-mapbox-gl": "^4.2.3",
     "react-rater": "^5.0.5",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
@@ -36,5 +38,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3001/"
 }

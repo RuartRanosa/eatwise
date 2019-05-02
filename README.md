@@ -70,6 +70,7 @@ CMSC 128 A-1L project: Eatwise!
 		npm install react-star-rating-component --save
 		npm install react-rater
 		npm install react-files --save
+		npm install --save react-map-gl
 		npm install react-mapbox-gl mapbox-gl --save
 
 		npm audit fix							// incase of vulnerabilities
@@ -143,14 +144,14 @@ CMSC 128 A-1L project: Eatwise!
 
 // to change default port, open package.json in client folder then edit the start field
 	ex.
-		"start": "PORT=5000 react-scripts start"
+		"start": "PORT=2020 react-scripts start"
 
 
 
 
 
 
-// http://10.11.114.177:5000/  =  access on local network
+// http://10.11.114.177:2020/  =  access on local network
 
 
 

@@ -1,0 +1,58 @@
+.App-header{
+  width:100%;
+  height: 100px;
+  background-color: #cb202d
+}
+
+.clogo{
+  float:left;
+  width: auto;
+  height:100px;
+}
+
+
+.logopic{
+  width:50%;
+  margin-left:120px;
+  margin-top: 15px;
+}
+
+.header{            /*for the buttons at the header (Login, Logout, Profile)*/
+  float: right;
+  width: auto;
+  height: 100px;
+}
+
+.header-button{         /*for the buttons at the header (Login, Logout, Profile)*/
+  font-family:helvetica;
+  color:white;
+  width: auto;
+  height: auto;
+  padding:5px;
+  float:right;
+  border-radius: 8px;
+  border-color: white;
+  margin-right:10px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: maroon;
+  font-family:helvetica;
+  color:white;
+}
+
+.header-button:hover{         /*for the buttons at the header (Login, Logout, Profile)*/
+  font-family:helvetica;
+  color:white;
+  width: auto;
+  height: auto;
+  padding:5px;
+  float:right;
+  border-radius: 8px;
+  border-color: white;
+  margin-right:10px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: black;
+  font-family:helvetica;
+  color:white;
+}

@@ -1,0 +1,53 @@
+
+.row1 {
+  
+  color:#fff;
+  font-size:11px;
+  width:164px;
+  cursor:pointer;
+}
+
+
+.inputtext {
+  border-color: #1d2a5b;
+  margin: 0;
+  width: auto;
+  border: 1px solid #bdc7d8;
+  margin-right: 10px;
+  padding: 3px;
+  background-color: white;
+}
+
+.header-button{         /*for the buttons at the header (Login, Logout, Profile)*/
+  font-family:helvetica;
+  color:white;
+  width: auto;
+  height: auto;
+  padding:5px;
+  float:right;
+  border-radius: 8px;
+  border-color: white;
+  margin-right:10px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: maroon;
+  font-family:helvetica;
+  color:white;
+}
+
+.header-button:hover{         /*for the buttons at the header (Login, Logout, Profile)*/
+  font-family:helvetica;
+  color:white;
+  width: auto;
+  height: auto;
+  padding:5px;
+  float:right;
+  border-radius: 8px;
+  border-color: white;
+  margin-right:10px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: black;
+  font-family:helvetica;
+  color:white;
+}

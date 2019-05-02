@@ -1,0 +1,77 @@
+.App{
+  width:100%;
+  margin:20px auto;
+}
+
+.mainContainer{
+  height: 100%;
+  width: 100%
+}
+
+/*.titleContainer{
+  width: 100%;
+}*/
+.blankavatar{
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  float: right;
+  margin-right: 100px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: auto; 
+}
+
+.resDetails{
+  float: left;
+  height: 400px;
+  width: 50%;
+  margin-top: 100px;
+  /*background-color: #E0E3E4*/
+  background-image: linear-gradient(#FFFFFF, #C6C5C2);
+}
+
+.resName{
+  position: relative;
+  top: 40%;
+  margin-left: 50px;
+  /*background-color: #E0E3E4*/
+}
+
+.commentContainer{
+  width: 100%;
+  float: left;
+  /*background-color: #E0E3E4*/
+  background-image: linear-gradient(#ABADAE, #898988);
+  text-align: center;
+}
+
+.picContainer{
+  height: 600px;
+  width: 50%;
+  float: left;
+  /*background-color: #E0E3E4;*/
+  background-image: linear-gradient(#C6C5C2, #ABADAE);
+  
+}
+
+.carouselContainer{
+  height: 500px;
+  width: 600px;
+  margin-top: 20px;
+  float: right;
+  margin-right: 3%;
+}
+
+
+.slidePic{
+  height: 500px;
+  width: 600px;
+  object-fit: fill;
+}
+
+
+.rating{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}

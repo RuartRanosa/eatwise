@@ -8,7 +8,7 @@ app.use(cors())
 process.env.SECRET_KEY = 'secret'
 
 let connection = mysql.createPool({
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     // port: '3333',
     user: 'root',
     password: '',
@@ -107,6 +107,12 @@ connection.getConnection(function(err) {
 		res.locals.connection = connection		
 		next()
 	}, controllerShop.addShop)
+
+	app.post('/add-review', (req, res, next) => {
+		res.locals.connection = connection		
+		next()
+	}, controllerReview.addReview)
+
 
   }
 });

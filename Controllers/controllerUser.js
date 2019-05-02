@@ -13,44 +13,44 @@ exports.register = function(req, res){
         password: req.body.password,
         location: "here"
     }
-    console.log(req.body.username)
-    conn.query('insert into user(adminAccess, username, email, displayName, password, location) values(false, "'+userData.username+'", "'+userData.email+'", "'+userData.display_name+'", "'+userData.password+'", "'+req.body.location+'");', (err, result) => {
-		if(!err){
-			// bcryptjs.hash(req.body.password, 10, (err, hash) => {
-   //          	userData.password = hash
-			// })
-			console.log("Register successful!")
-			res.send(result)
-		}else{
-            return res.send(400, 'Couldnt get a connection');
-        }
-	})
+    conn.query("select email from user where email = '"+req.body.email+"';", (err, result)=>{
+    	if(!err && result.length === 0){
+		    conn.query('call addUser(false, "'+userData.username+'", "'+userData.email+'", "'+userData.display_name+'", "'+userData.password+'", "'+userData.location+'");', (err, res) => {
+					console.log("Register successful!")
+					res.send(res)
+				
+			})
+    	}else{
+    		console.log(result)
+    		res.send(200, "User is already registered")
+    	}
+    })
 }
 
 exports.login = function(req, res){
 	var conn = res.locals.connection	
-	console.log(req.body.email)
-    conn.query('select * from user where email = "'+req.body.email+'";', (err, result) => {
-		if(!err){
+    conn.query('select userId, adminAccess, username, displayName, email, CAST(aes_decrypt(password, "secret") AS CHAR(10000) CHARACTER SET utf8) as password from user where email = "'+req.body.email+'";', (err, result) => {
+		if(!err && result.length > 0){
 			if (req.body.password === result[0].password) {
+
 					console.log("creating token")
                     const payload = {
-                        // _id: result[0].userId,
+                        userId: result[0].userId,
                         username: result[0].username,
                         display_name: result[0].displayName,
                         email: result[0].email,
+                        adminAccess: result[0].adminAccess
                     }
                     let token = jwt.sign(payload, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     })
                     console.log("Logged in!!!")
-                    console.log(token)
                     res.send(token)
                 } else {
                     res.json({ error: "User does not exist" })
                 }
 		}else{
-            return res.send(400, 'Couldnt get a connection');
+           res.send(400, 'Couldnt get a connection');
         }
 	})
 }
@@ -62,7 +62,7 @@ exports.viewUsers = function(req, res){
 			console.log(result[0].password)
 			res.send(result)
 		}else{
-            return res.send(400, 'Couldnt get a connection');
+            res.send(400, 'Couldnt get a connection');
         }
 	})
 }
@@ -74,7 +74,7 @@ exports.addUser = function(req, res){
 			console.log(result)
 			res.send(result)
 		}else{
-            return res.send(400, 'Couldnt get a connection');
+            res.send(400, 'Couldnt get a connection');
         }
 	})
 }
@@ -89,7 +89,7 @@ exports.updateUser = function(req, res){
 			console.log(result)
 			res.send(result)
 		}else{
-            return res.send(400, 'Couldnt get a connection');
+            res.send(400, 'Couldnt get a connection');
         }
 	})
 }
@@ -103,7 +103,7 @@ exports.deleteUser = function(req, res){
 			console.log(result)
 			res.send(result)
 		}else{
-            return res.send(400, 'Couldnt get a connection');
+            res.send(400, 'Couldnt get a connection');
         }
 	})
 }

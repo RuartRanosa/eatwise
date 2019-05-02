@@ -22,11 +22,12 @@ exports.viewReviews = function(req, res){
 
 exports.addReview = function(req, res){
 	var conn = res.locals.connection																				// establishes connection to the database
-	conn.query('insert into review(userId, reviewCreation, shopId, comment, tips, rating) values(' + req.body.userId, + ', "' + req.body.reviewCreation + '", "' + req.body.shopId + '", "' + req.body.comment + '", "' + req.body.tips + '", "' + req.body.rating + '");', (err,result) => { 											// MySQL query to insert the new review in the review table
+	conn.query('insert into review(userId, shopId, comment, rating) values(' + req.body.userId + ', '+ req.body.shopId+ ', "'+req.body.comment+'", ' + req.body.rating + ');', (err,result) => { 											// MySQL query to insert the new review in the review table
 		if(!err){
 			console.log(result)																						// returns result to server
 			res.send(result)																						// returns result to client
 		}else{
+			console.log(err)
 			return res.send(400, 'Couldnt get a connection');														// returns error message when connection fails
 		}
 	})

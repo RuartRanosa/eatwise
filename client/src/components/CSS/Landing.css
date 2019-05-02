@@ -1,0 +1,78 @@
+.App{
+  width:100%;
+  margin:0px auto;
+  background-color: #cb202d
+}
+
+.App-header{
+  width:100%;
+  height: 100px;
+  background-color: #cb202d
+}
+
+.App-body{
+  float:left;
+  width:100%;
+}
+
+.slideshow{
+  /*background-color: yellow;*/
+  float:left;
+  width:100%;
+  height:450px;
+}
+
+.pictures{
+  text-align: center;
+  height:400px;
+  width:100%;
+  /*background-color: green;*/
+  float:left;
+}
+
+.pic2{
+  max-height: 400px;
+  width:100%;
+}
+
+.bottom-part{
+  height:400px;
+  width:80%;
+  float:left;
+}
+
+.bottom-side{
+  width:15%;
+  float:left;
+}
+
+.bottom-text{
+  margin-top:20px;
+  font-size:30px;
+}
+
+.bottom-subtext{
+  font-size:15px;
+  color:grey;
+}
+
+.table-bottom{
+  margin-top:30px;
+  font-size:20px;
+  width:100%;
+  height:200px;
+  table-layout: fixed;
+}
+
+.thumbnail{
+  width:150px;
+  height:150px;
+}
+
+.sTitle{
+  color:white;
+  text-shadow: 2px 2px 5px black;
+}
+.cell-text{
+  vertical-align: center;
+}

@@ -1,33 +1,47 @@
 # eatwise
 CMSC 128 A-1L project: Eatwise!
 
-// INSTALL APPLICATIONS TO BE USED ========================================================================
+// INSTALL APPLICATIONS TO BE USED //
 	1.) install mariadb
 			https://computingforgeeks.com/install-mariadb-10-on-ubuntu-18-04-and-centos-7/
 	2.) install nodejs
 			sudo npm cache clean -f
 			sudo npm install -g n
 			sudo n stable
-// LOAD DATABASE ==========================================================================================
-	1.) open mysql/ mariadb by typing in cmd:
-			mysql -u root -p
-			// enter your password if prompted
+	3.) install create-react-app
+		sudo npm install -g create-react-app
 
-	2.) load database by typing:
-			source eatwise.sql
 
-// INSTALLATION ===========================================================================================
+
+
+
+// INSTRUCTIONS ON HOW TO RUN //
+	1.) git clone https://github.com/RuartRanosa/eatwise.git
+	2.) load the database
+		2.1.) open mariadb by typing in cmd:
+				mysql -u root -p
+		2.2.) load database by typing:
+				source eatwise.sql
+	3.) run the command:
+	 		npm start
+
+
+
+
+
+// In the event that it does not run after the above instructions, proceed to manual installation below
+
+
+
+
+
+// INSTALLATION // 
 	# Go to any directory (In my case "Desktop")
 	
-	1.) mkdir Eatwise
+	1.) mkdir eatwise
+		cd Eatwise
 	
-	2.) cd Eatwise
-	
-	3.) mkdir back-end 
-	
-	4.) cd back-end
-	
-	5.) do the following:
+	2.) do the following:
 		npm init								
 		npm install mysql	
 		npm install --save express  	
@@ -37,17 +51,12 @@ CMSC 128 A-1L project: Eatwise!
 		npm install express-jwt			
 		npm install request						
 		npm install cors
-
-	6.) cd ../
 	
-	7.) install create-react-app
-		sudo npm install -g create-react-app
+	3.) create folder "client"	
+		create-react-app client
+		cd client
 	
-	8.) create folder "front-end"	
-		create-react-app front-end
-		cd front-end
-	
-	9.) do the following:
+	4.) do the following:
 		npm install react-bootstrap
 		npm install --save react-router react-router-dom
 		npm install --save axios
@@ -60,17 +69,10 @@ CMSC 128 A-1L project: Eatwise!
 
 		npm audit fix							// incase of vulnerabilities
 
-	10.) copy files from back-end and front-end folders from team drive to your local back-end and front-end folders
-		10.1.) for the back-end subfolder copy the following:
-				Controllers 		(folder)
-				Routers 			(folder)
-				index.json			(file)
-				request.js 			(file)
-
-		10.2.) For the front-end subfolder copy the following:
-				src 				(folder)
-
-	11.) Edit router.js in back-end/Routers
+	5.) copy files from github except for the files "package.json", "package-lock.json"
+		 and folders "node_modules" in root and client folders
+			
+	6.) Edit router.js in back-end/Routers
 				let connection = mysql.createConnection({
 				    host: 'localhost',
 				    user: 'root',
@@ -79,8 +81,8 @@ CMSC 128 A-1L project: Eatwise!
 				});
 		// change the password value to the password of your mariadb/ mysql database 
 
-	12.) modify "package.json" in the "front-end" subfolder:
-			1.) and add "proxy": "http://localhost:2019"
+	7.) modify "package.json" in the "client":
+			1.) proxy": "http://localhost:2019"
 			2.) modify start in scripts and add PORT=2020
 			
 			ex.				
@@ -129,23 +131,26 @@ CMSC 128 A-1L project: Eatwise!
 				}
  
 
-// RUN SERVERS ==============================================================================================
-	1. open 2 terminals
 
-	2. cd Eatwise/back-end 			(in the 1st terminal)
 
-	3. node index.js 				(start nodejs server)
-	
-	4. cd Eatwise/front-end 		(in the 2nd terminal)
 
-	5. npm start 					(start reactjs)
 
 
 // to change default port, open package.json in client folder then edit the start field
 	ex.
 		"start": "PORT=5000 react-scripts start"
 
+
+
+
+
+
 // http://10.11.114.177:5000/  =  access on local network
+
+
+
+
+
 
 // in the event that there is an error in starting both ports used (2019 and 2020) use this command:
 	sudo kill `sudo lsof -t -i:2019`

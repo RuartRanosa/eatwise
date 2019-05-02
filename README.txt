@@ -76,36 +76,55 @@
 				});
 		// change the password value to the password of your mariadb/ mysql database 
 
-	12.) modify "package.json" in the "front-end" subfolder and add "proxy": "http://localhost:3000",
-			ex.				{
-							  "name": "front-end",
-							  "version": "0.1.0",
-							  "private": true,
-							  "dependencies": {
-							    "axios": "^0.18.0",
-							    "react": "^16.8.4",
-							    "react-dom": "^16.8.4",
-							    "react-router": "^5.0.0",
-							    "react-router-dom": "^5.0.0",
-							    "react-scripts": "2.1.8"
-							  },
-							  "scripts": {
-							    "start": "react-scripts start",
-							    "build": "react-scripts build",
-							    "test": "react-scripts test",
-							    "eject": "react-scripts eject"
-							  },
-							  "eslintConfig": {
-							    "extends": "react-app"
-							  },
-		    HERE------->>>	  "proxy": "http://localhost:3000",
-							  "browserslist": [
-							    ">0.2%",
-							    "not dead",
-							    "not ie <= 11",
-							    "not op_mini all"
-							  ]
-							} 
+	12.) modify "package.json" in the "front-end" subfolder:
+			1.) and add "proxy": "http://localhost:2019"
+			2.) modify start in scripts and add PORT=2020
+			
+			ex.				
+				{
+				  "name": "client",
+				  "version": "0.1.0",
+				  "private": true,
+				  "dependencies": {
+				    "axios": "^0.18.0",
+				    "jwt-decode": "^2.2.0",
+				    "mapbox-gl": "^0.54.0",
+				    "query-string": "^6.5.0",
+				    "react": "^16.8.6",
+				    "react-bootstrap": "^1.0.0-beta.8",
+				    "react-dom": "^16.8.6",
+				    "react-files": "^2.4.8",
+				    "react-mapbox-gl": "^4.2.3",
+				    "react-rater": "^5.0.5",
+				    "react-router": "^5.0.0",
+				    "react-router-dom": "^5.0.0",
+				    "react-scripts": "3.0.0",
+				    "react-star-rating-component": "^1.4.1"
+				  },
+				  "scripts": {
+				    "start": "PORT=2020 react-scripts start",
+				    "build": "react-scripts build",
+				    "test": "react-scripts test",
+				    "eject": "react-scripts eject"
+				  },
+				  "eslintConfig": {
+				    "extends": "react-app"
+				  },
+				  "browserslist": {
+				    "production": [
+				      ">0.2%",
+				      "not dead",
+				      "not op_mini all"
+				    ],
+				    "development": [
+				      "last 1 chrome version",
+				      "last 1 firefox version",
+				      "last 1 safari version"
+				    ]
+				  },
+				  "proxy": "http://localhost:2019/"
+				}
+ 
 
 // RUN SERVERS ==============================================================================================
 	1. open 2 terminals
@@ -119,3 +138,14 @@
 	5. npm start 					(start reactjs)
 
 
+// to change default port, open package.json in client folder then edit the start field
+	ex.
+		"start": "PORT=5000 react-scripts start"
+
+// http://10.11.114.177:5000/  =  access on local network
+
+// in the event that there is an error in starting both ports used (2019 and 2020) use this command:
+	sudo kill `sudo lsof -t -i:2019`
+	sudo kill `sudo lsof -t -i:2020`
+	// kills the process running on the specified port
+	// only do this if the process running on the ports are not important

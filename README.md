@@ -1,6 +1,11 @@
 # eatwise
 CMSC 128 A-1L project: Eatwise!
 
+
+
+
+
+
 // INSTALL APPLICATIONS TO BE USED //
 	1.) install mariadb
 			https://computingforgeeks.com/install-mariadb-10-on-ubuntu-18-04-and-centos-7/
